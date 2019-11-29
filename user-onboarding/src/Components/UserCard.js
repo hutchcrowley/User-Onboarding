@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 import { Card, CardImg } from 'react-bootstrap';
 
@@ -17,10 +17,10 @@ const UserCard = props => {
 
 export default UserCard;
 
-// UserCard.propTypes = {
-//   name: PropTypes.string,
-//   password: PropTypes.string,
-//   TOS: PropTypes.bool,
-//   search: PropTypes.string,
-//   avatar: PropTypes.string
-// };
+UserCard.propTypes = {
+  name: PropTypes.string,
+  password: PropTypes.string,
+  TOS: PropTypes.bool,
+  search: PropTypes.string,
+  avatar: PropTypes.string
+};

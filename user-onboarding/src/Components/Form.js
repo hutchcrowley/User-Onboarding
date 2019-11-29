@@ -37,9 +37,9 @@ const OnboardingForm = ({ values, touched, errors }) => {
           <label>By checking this box you agree to the terms of service:</label>
           <Field className='checkmark' type='checkbox' name='TOS' value={values.TOS} />
         </div>
-        <Field type='submit' className='submit-button'>
+        <button type='submit' className='submit-button'>
           Submit!
-        </Field>
+        </button>
       </Form>
     </div>
   );
