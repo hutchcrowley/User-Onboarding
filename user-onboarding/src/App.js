@@ -19,7 +19,7 @@ const App = () => {
       .then(res => {
         setIsLoading(false)
         setUsers(res.data)
-        console.log(res.data)
+        console.log('server response: ', res.data)
       })
       .catch(err => {
         console.log('Error: the data was not returned from the server', err)

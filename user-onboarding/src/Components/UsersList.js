@@ -1,19 +1,25 @@
 import React from 'react'
-import UserCard from 'react'
+import UserCard from './UserCard'
 
 const UsersList = props => {
+  console.table(props.users)
+  const usersList = Object.values(props.users)
+  console.table('usersList: ', usersList)
   return (
     <div className='users-list'>
-      {props.users.map(user => (
-        <div className='user' key={user.id}>
-          <UserCard
-            name={user.name}
-            avatar={user.avatar}
-            password={user.password}
-            email={user.email}
-          />
-        </div>
-      ))}
+      {usersList.map(function (user, index) {
+        return (
+          <div key={index}>
+            <UserCard
+              id={user.id}
+              name={user.name}
+              avatar={user.avatar}
+              password={user.password}
+              email={user.email}
+            />
+          </div>
+        )
+      })}
     </div>
   )
 }

@@ -7,8 +7,8 @@ const OnboardingForm = ({ values, touched, errors, isSubmitting }) => {
   console.log('these are some values:', values)
 
   return (
-    <div className='App'>
-      <Form className='onboarding-form'>
+    <div className='onboarding-form'>
+      <Form>
         <div className='text-inputs'>
           <label>
             Username:
