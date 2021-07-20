@@ -1,53 +1,71 @@
-import React, { useState, useEffect } from 'react';
-import Spinner from './Components/Spinner';
-import UsersList from './Components/UsersList';
-import UserCard from './Components/UserCard';
-import Form from './Components/Form';
-import SearchForm from './Components/SearchForm';
+import React, { useState, useEffect } from 'react'
+import Form from './Components/Form'
+import UserCard from './Components/UserCard'
+import UsersList from './Components/UsersList'
+import SearchForm from './Components/SearchForm'
+import Spinner from './Components/Spinner'
+import PropTypes from 'prop-types'
 
-import axios from 'axios';
-import { Route, Link, Switch } from 'react-router-dom';
+import axios from 'axios'
+import { Route, Link } from 'react-router-dom'
 
-const App = props => {
-  const [users, setUsers] = useState([]);
-  const { results, setResults } = useState('');
-  const { isLoading, setIsLoading } = useState(false);
+const App = () => {
+  const [users, setUsers] = useState([])
+  const [isLoading, setIsLoading] = useState(false)
 
-  useEffect(
-    () => {
-      axios
-        .get(`https://reqres.in/api/users`)
-        .then(res => {
-          console.log(res.data);
-          setResults(res.data);
-          setUsers(results);
-          setIsLoading(false);
-        })
-        .catch(err => {
-          console.log('Error: the data was not returned from the server', err);
+  useEffect(() => {
+    axios
+      .get('https://reqres.in/api/users/')
+      .then(res => {
+        setIsLoading(false)
+        setUsers(res.data)
+        console.log(res.data)
+      })
+      .catch(err => {
+        console.log('Error: the data was not returned from the server', err)
+        setIsLoading(true)
+      })
+  }, [setUsers, setIsLoading])
 
-        });
-    },
-    [setResults, setUsers, setIsLoading, results]
-  );
-  const addNewUser = user => {
-    setUsers({ ...users, user });
-  };
+  //   const searchResultDisplay = search => {
+  //     const searchResults = users.filter(user => user.name.toLowerCase() === search.toLowerCase());
+  //     setUsers(searchResults);
+  //   };
 
   return (
     <div className='App'>
-      <Link to='/'>Home</Link>
-      <Link to='/users'>Users</Link>
-      <Switch>
-        <Route exact path='/' component={Form} />
-        <Route exact path='/users' render={props => <UsersList {...props} users={users} addNewUser={addNewUser} />} />
+      <div className='nav-bar'>
+        <Link to='/' className='nav-link'>
+          Home
+        </Link>
+        <Link to='/users' className='nav-link'>
+          Users
+        </Link>
+        <Link to='/users/search' className='nav-link'>
+          Search
+        </Link>
+      </div>
+      <div className='app-body'>
+        <h1>Hello, welcome to user onboarding!</h1>
+        {isLoading === true ? (
+          <Spinner />
+        ) : (
+          <Route exact path='/' render={props => <Form {...props} />} />
+        )}
+        <Route
+          exact
+          path='/users'
+          render={props => <UsersList {...props} users={users} />}
+        />
         <Route path='/users/:username' component={UserCard} />
         <Route path='/users/search' component={SearchForm} />
-        <Route component={Spinner} />
-      </Switch>
-      console.log(props.match);
+      </div>
     </div>
-  );
-};
+  )
+}
 
-export default App;
+export default App
+
+App.propTypes = {
+  isLoading: PropTypes.bool
+}
