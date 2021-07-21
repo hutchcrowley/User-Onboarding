@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import UserCard from './UserCard'
 
 const UsersList = props => {
   console.table(props.users)
-  const usersList = Object.values(props.users)
+  const usersList = useState(props.users)
   console.table('usersList: ', usersList)
   return (
     <div className='users-list'>

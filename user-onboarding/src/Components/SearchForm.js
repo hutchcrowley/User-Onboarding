@@ -1,36 +1,34 @@
 import React, { useState } from 'react'
 
 const SearchForm = props => {
-  const [query, setQuery] = useState('')
+  // define a placeholder for search field value
+  const [search, setSearch] = useState('')
+  // function that packages placeholder with new search value derived from user input
 
-  const resetInputField = () => {
-    setQuery('')
-  }
-  const submitSearch = event => {
-    event.preventDefault()
-    props.search(query)
-    resetInputField()
+  const handleInputChange = e => {
+    const search = e.target.value
+    setSearch(e.target.value)
+    console.log(search)
   }
 
-  const handleInputChange = event => {
-    setQuery(event.target.value)
-    console.log(query)
+  //  function that sends new search data to parent component
+  const submitSearch = () => {
+    const newSearch = search
+    props.search(newSearch)
+    setSearch('')
   }
+
+  // display search form component
   return (
     <div>
-      <form className='search-form' onChange={handleInputChange}>
+      <form className='search-form' onSubmit={e => submitSearch(e)}>
         <input
           className='search-bar'
           type='text'
-          value={query}
           placeholder='Search for...'
+          onChange={e => handleInputChange(e)}
         />
-        <input
-          type='submit'
-          className='search-button'
-          onClick={submitSearch}
-          value='SEARCH'
-        />
+        <input type='submit' className='search-button' />
       </form>
     </div>
   )

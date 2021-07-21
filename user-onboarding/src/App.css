@@ -1,110 +1,175 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  width: 90%;
+  margin: 2em auto;
+  font: 1em/1.3 Arial, Helvetica, sans-serif;
+}
+
+a:link,
+a:visited {
+  color: #333;
+}
+
+nav ul,
+aside ul {
+  list-style: none;
+  padding: 0;
+}
+
+nav a:link,
+nav a:visited {
+  background-color: rgba(207, 232, 220, 0.2);
+  border: 2px solid rgb(79, 185, 227);
+  text-decoration: none;
+  display: block;
+  padding: 10px;
+}
 body,
 #root {
   width: 100vw;
   height: 100vh;
 }
 
-.App {
-  max-width: 100vw;
-  min-height: 100vh;
-  background-color: #000;
-  display: flex;
-  flex-flow: column nowrap;
-  align-content: center;
-  justify-content: start;
-}
+@media screen and (min-width: 30rem) {
+  a {
+    margin: 0;
+    width: 100%;
+    padding: 0;
+  }
 
-.nav-bar {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-}
+  h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fff;
+    /* margin: 5rem 0rem; */
+  }
 
-.nav-link {
-  font-size: 5rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-weight: 700;
-  background-color: #ccc;
-  opacity: 0.4;
-  /* padding: 0.5rem 3rem; */
-  /* padding: 0.5rem 3rem; */
-  width: 20%;
-}
+  .app-wrapper {
+    height: 100vh;
+    width: 100vw;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+    z-index: 1;
+  }
 
-.app-body {
-  height: inherit;
-  display: flex;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-items: space-around;
-}
+  .App {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: flex-start;
+    background-color: #000;
+    z-index: 3;
+  }
 
-/* User-defined styles (form) */
+  .nav-bar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
 
-.checkbox-container {
-  display: block;
-  position: relative;
-  padding-left: 35px;
-  margin-top: 32px;
-  cursor: pointer;
-  font-size: 18px;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
+  .nav-link {
+    font-size: 5rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: 700;
+    background-color: #ccc;
+    opacity: 0.4;
+    width: 20%;
+    padding: 0;
+  }
 
-/* Hide the browser's default checkbox */
-.checkbox-container {
-  position: absolute;
-  opacity: 0;
-  cursor: pointer;
-  height: 0;
-  width: 0;
-}
+  .app-body {
+    min-height: 100%;
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: center;
+    padding: 12rem;
+  }
 
-/* Create a custom checkbox */
-.checkmark {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 25px;
-  width: 25px;
-  background-color: #eee;
-}
+  .spinner-center {
+    margin: 2.5% auto;
+  }
 
-/* On mouse-over, add a grey background color */
-.checkbox-container:hover input ~ .checkmark {
-  background-color: #ccc;
-}
+  /* User-defined styles (form) */
 
-/* When the checkbox is checked, add a blue background */
-.checkbox-container input:checked ~ .checkmark {
-  background-color: #5eb7b3;
-}
+  .onboarding-form {
+    display: flex;
+    flex-flow: column nowrap;
+    align-content: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+  }
 
-/* Create the checkmark/indicator (hidden when not checked) */
-.checkmark:after {
-  content: '';
-  position: absolute;
-  display: none;
-}
+  .checkbox-container {
+    display: inline-block;
+    position: relative;
+    padding-left: 35px;
+    margin-top: 32px;
+    cursor: pointer;
+    font-size: 18px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
 
-/* Show the checkmark when checked */
-.checkbox-container input:checked ~ .checkmark:after {
-  display: block;
-}
+  /* Hide the browser's default checkbox */
+  .checkbox-container {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
 
-/* Style the checkmark/indicator */
-.checkbox-container .checkmark:after {
-  left: 9px;
-  top: 5px;
-  width: 5px;
-  height: 10px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  -webkit-transform: rotate(45deg);
-  -ms-transform: rotate(45deg);
-  transform: rotate(45deg);
+  /* Create a custom checkbox */
+  .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+  }
+
+  /* On mouse-over, add a grey background color */
+  .checkbox-container:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+
+  /* When the checkbox is checked, add a blue background */
+  .checkbox-container input:checked ~ .checkmark {
+    background-color: #5eb7b3;
+  }
+
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+    content: '';
+    position: absolute;
+    display: none;
+  }
+
+  /* Show the checkmark when checked */
+  .checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  /* Style the checkmark/indicator */
+  .checkbox-container .checkmark:after {
+    left: 9px;
+    top: 5px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
 }

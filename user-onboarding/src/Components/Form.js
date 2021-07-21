@@ -49,7 +49,7 @@ const OnboardingForm = ({ values, touched, errors, isSubmitting }) => {
             )}
           </label>
         </div>
-        <button className='submit-button' disabled={isSubmitting}>
+        <button className='submit-button' disabled={isSubmitting} type='submit'>
           Submit!
         </button>
       </Form>
